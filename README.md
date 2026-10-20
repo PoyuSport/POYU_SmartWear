@@ -20,7 +20,16 @@
 - ESP32-S3-WROOM-1 模组、USB-C、microSD 卡座、IMU、气压计、电量计
 - Altium 工程、实物照片与 PCB 版图见 [hardware/](hardware/)
 
-<img src="hardware/images/board-front.jpg" width="420" alt="POYU Smart Wear 实物">
+<table>
+<tr>
+<td align="center"><img src="hardware/images/board-front.jpg" width="360" alt="POYU Smart Wear 实物正面"><br>实物正面</td>
+<td align="center"><img src="hardware/images/board-back.jpg" width="360" alt="POYU Smart Wear 实物背面"><br>实物背面</td>
+</tr>
+<tr>
+<td align="center"><img src="hardware/images/pcb-front.jpg" width="360" alt="PCB 顶层"><br>PCB 顶层（元件面）</td>
+<td align="center"><img src="hardware/images/pcb-back.png" width="360" alt="PCB 底层"><br>PCB 底层（SD 卡座面）</td>
+</tr>
+</table>
 
 ## 目录结构
 
