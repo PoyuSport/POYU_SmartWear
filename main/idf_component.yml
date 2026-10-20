@@ -1,0 +1,11 @@
+name: smart_wear
+version: "1.0.0"
+dependencies:
+  espressif/esp_tinyusb: "2.0.1"
+  espressif/esp-sr: ">=1.5.0"  # 指定具体版本范围
+  espressif/arduino-esp32:
+    version: "3.3.1"           # 若无需预发布，可删除pre_release  
+  # tinyusb:
+  #   public: true
+  #   version: '>=0.17.0
+  espressif/esp-dsp: "^1.7.0"

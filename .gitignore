@@ -1,0 +1,38 @@
+# Build artifacts and local state
+build/
+managed_components/
+sdkconfig
+sdkconfig.old
+.vscode/
+*.code-workspace
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+training/data/
+training/test_data/
+training/train_data/
+training/*.h5
+
+# Datasets and captured data
+data/
+train_data/
+train_data*/
+test_data/
+*.bin
+*.csv
+!partitions.csv
+!docs/*.csv
+
+# Archives, vendor documents and installers
+*.zip
+*.pdf
+*.7z
+*.rar
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
