@@ -18,7 +18,7 @@
 ## 硬件
 
 - ESP32-S3-WROOM-1 模组、USB-C、microSD 卡座、IMU、气压计、电量计
-- Altium 工程、实物照片与 PCB 版图见 [hardware/](hardware/)
+- Altium 工程、实物照片、PCB 版图与外壳（STL + SolidWorks）见 [hardware/](hardware/)
 
 <table>
 <tr>

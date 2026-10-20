@@ -29,10 +29,19 @@ hardware/
 │   ├── poyu.pcbdoc             # PCB
 │   ├── poyu.PcbLib             # 工程内封装库
 │   └── poyu.PRJPCBStructure
+├── enclosure/
+│   ├── stl/                    # v6 上/下壳 STL
+│   └── solidworks/             # v8 装配体与零件
 └── lib/
     ├── 0402/                   # 工程引用的电阻/电容封装
     └── SC7A22H/                # 加速度计封装与符号
 ```
+
+## 外壳
+
+- `enclosure/stl/`：v6 上壳、下壳，可直接切片打印；
+- `enclosure/solidworks/`：v8 装配体、上下壳零件和整机外形参考；
+- 版本差异、打印建议见 [enclosure/README.md](enclosure/README.md)。
 
 ## 打开
 
