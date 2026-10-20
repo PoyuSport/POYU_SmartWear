@@ -67,6 +67,8 @@ idf.py -p COM5 flash monitor
 
 Linux 下把 `COM5` 换成 `/dev/ttyUSB0` 或 `/dev/ttyACM0`。退出 monitor：`Ctrl+]`。
 
+烧录后建议先用微信小程序 **Poyu Sport** 做一次连接测试，步骤和 BLE 参数见 [FRONTEND.md](FRONTEND.md)。
+
 ## 模型开关
 
 `main/SW_define.h`：
