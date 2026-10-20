@@ -91,23 +91,6 @@ GenerateClassCluster=0
 DocumentUniqueId=NBUPGSLK
 
 [Document4]
-DocumentPath=..\..\lib\SC7A22H\LGA-12_L2.0-W2.0-P0.50-BL.PcbLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=YBILWLHO
-
-[Document5]
 DocumentPath=..\..\lib\SC7A22H\SC7A22H.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
