@@ -5,15 +5,73 @@
 > 这是 **开源版本**：包含固件、模型、训练脚本，以及 ESP32-S3 的 Altium 硬件工程（`hardware/`）。
 > 原始采集数据、数据手册、厂商安装包和构建产物 **不在本仓库中**。
 
-## 功能
+## 功能总览
 
-- **ESP32-S3 + PSRAM**，ESP-IDF 5.3.1，16 MB Flash，OTA 双分区
-- **传感器**：ICM-20948 / MPU-9250 / SC7A22H 驱动、MS5611 气压计、MAX17043 电量计、SD 卡、OLED、EEPROM
-- **端侧推理**：12 维特征 × 75 帧窗口，Conv1D + LSTM + 统计分支，TFLite Micro
-- **两种模型**：float32 与 int8（由 `TFLITE_INT8_NORMALIZE_FLAG` 选择）
-- **通信**：BLE TLV 协议（Canonical Protocol v1-Lite）、Wi-Fi SoftAP + WebSocket
-- **低功耗**：ULP RISC-V 协处理器加速度唤醒
-- **训练管线**：数据加载、窗口切分、训练、剪枝、量化、TFLite 转换、评估
+### 设备与固件
+
+- **ESP32-S3-WROOM-1**，16 MB Flash，Octal PSRAM 80 MHz；ESP-IDF 5.3.1 + Arduino-ESP32 3.3.1
+- **传感器驱动**：ICM-20948、MPU-9250、SC7A22H、MS5611 气压计、MAX17043 电量计、EEPROM、microSD
+- **传感器融合**：四元数滤波、BodyFrameTracker、Butterworth 滤波、气压高度补偿、RPM/圈数
+- **双模式**：`ENABLE_DEDUCTION_FLAG=0` 只采集，`=1` 端侧推理
+- **数据记录**：50 Hz CSV 写 SD 卡，文件轮转；包含姿态、加速度、角速度、四元数、RPM、类型、时间
+- **低功耗**：自动 light sleep、DFS、Wi-Fi modem sleep、深度睡眠、GPIO ext0/ext1 唤醒
+- **状态持久化**：NVS 保存爬升高度、圈数、海平面气压、文件计数、启动次数和时间恢复
+- **可靠性**：启动原因、复位统计、诊断日志
+
+### 端侧 AI
+
+- **4 类识别**：其他 / 步行 / 骑行 / 跑步；输出概率，低于 0.4 归为“未知”
+- **输入**：12 维特征 × 75 帧窗口（50 Hz 约 1.5 秒），步长 40 帧
+- **模型**：Conv1D + LSTM + 均值/标准差分支 → Dense64 → 4 类 softmax
+- **推理框架**：TFLite Micro，float32 输入 + int8 算子；仓库同时保留 int8/float32 两套模型头文件
+- **内存**：256 KB PSRAM tensor arena，27 个注册算子，16 字节对齐
+- **流水线**：50 帧为一块写入 PSRAM 双缓冲，推理时拷贝模型需要的 75×12 输入
+- **模型体积**：约 629 KB，C 数组直接链接进固件，不依赖文件系统
+
+### 通信与调试
+
+- **BLE**：广播名 `POYUSPORT`，Service `4fafc201-…`，Characteristic `beb5483e-…`
+- **TLV 协议**：HELLO / STATE / TELEMETRY / CONTROL / ACK，CRC16-CCITT-FALSE
+- **兼容文本行**：`poyu#...`，便于旧工具或串口调试
+- **Wi-Fi**：SoftAP + WebSocket 实时数据调试
+- **串口日志**：tensor arena 占用、推理类别/概率、复位原因
+- **测试前端**：微信小程序 **Poyu Sport**；也可用 nRF Connect / LightBlue
+
+### 训练与工具链
+
+- 采集 → 检查 → 标注 → 窗口化 → 训练 → 剪枝 → 量化 → TFLite → C 头文件
+- 按 `Sample_Block` 分组划分，避免同一段窗口泄漏到测试集
+- 剪枝 5%→10%，int8 量化，representative dataset 抽 500 个窗口
+- `training/tools/`：数据统计、CSV 拆分、带通滤波、TFLite 输入/量化检查
+- `eval_tflite.py`：准确率、混淆矩阵、逐样本对比
+- 完整方法见 [docs/TRAINING.md](docs/TRAINING.md)
+
+### 硬件与结构
+
+- Altium `版本18_four`：原理图、PCB、封装库
+- 实物照片、PCB 顶层/底层版图
+- 外壳正面/反面 STL，以及装配、外部、内部渲染
+- 硬件设计使用 CERN-OHL-W-2.0
+
+### 文档与许可
+
+- 协议、编译、数据格式、训练流程、开发环境、小程序测试说明
+- 原创代码 Apache-2.0；第三方组件保留各自许可；模型 Apache-2.0；硬件 CERN-OHL-W-2.0
+
+## 值得拿出来说的点
+
+| 亮点 | 说明 |
+|---|---|
+| **全链路开源** | 固件 + 训练管线 + 模型 + Altium 硬件 + 外壳 STL 在同一仓库 |
+| **真端侧推理** | 不依赖手机或云端，模型 629 KB，256 KB PSRAM arena 即可运行 |
+| **采集/推理同一固件** | 一个开关切换数据采集与端侧推理，采集数据可直接进入训练流程 |
+| **数据不泄漏** | 按 `Sample_Block` 分组划分训练/测试，避免同一段窗口泄漏 |
+| **量化到 C 数组** | float32 输入 + int8 算子，转换后直接生成 `model_data` 头文件 |
+| **多传感器融合** | IMU 姿态 + 气压高度 + 电量 + RPM/圈数统一进协议和日志 |
+| **低功耗组合** | light sleep、DFS、Wi-Fi modem sleep、深度睡眠、GPIO 唤醒 |
+| **双通道调试** | BLE TLV 面向产品，SoftAP + WebSocket 面向实时波形调试 |
+| **可复现工具** | 数据检查、拆分、滤波、TFLite 检查脚本都在仓库里 |
+| **许可分层** | 代码 Apache-2.0，硬件 CERN-OHL-W-2.0，边界清晰 |
 
 ## 硬件
 
@@ -58,7 +116,7 @@ smart_wear_open/
 │   ├── main.cpp / Initialize.cpp
 │   ├── include/                # 传感器、算法、AI、任务头文件
 │   ├── src/                    # C++ 实现
-│   ├── ulp/                    # ULP RISC-V 唤醒程序
+│   ├── ulp/                    # ULP RISC-V 程序（默认未启用）
 │   ├── tusb/                   # TinyUSB 描述符
 │   ├── scripts/ulp_build.py
 │   └── idf_component.yml
@@ -141,6 +199,10 @@ python eval_tflite.py
 - 部分历史注释/命名保留了原工程的写法，欢迎 PR 清理。
 - 硬件工程只含 Altium 源文件，不含 Gerber / BOM / 坐标文件；3D 模型链接已脱敏，打开时可能提示缺失，重新链接即可。
 - 硬件版本为 `版本18_four`：原理图 2026-01-07、PCB 2026-01-06；打样前请在 Altium 中重新编译并跑 DRC。
+- 没有实现 OTA 推送；`partitions.csv` 只是保留了双 app 槽位。
+- OLED 驱动头文件存在，但未参与默认构建；当前固件不驱动屏幕。
+- ULP 源码保留在 `main/ulp/`，但默认未启用；低功耗唤醒使用 GPIO ext0/ext1。
+- TinyUSB MSC 初始化调用被注释，默认不作为 U 盘暴露 SD 卡。
 
 ## 许可证
 
