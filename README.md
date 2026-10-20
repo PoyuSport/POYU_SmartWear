@@ -36,7 +36,7 @@
 <table>
 <tr>
 <td align="center"><img src="hardware/enclosure/images/shell-assembled.png" width="230" alt="外壳装配图"><br>装配图（渲染）</td>
-<td align="center"><img src="hardware/enclosure/images/shell-outside.jpg" width="230" alt="外壳外部"><br>外壳外部（四角螺丝孔）</td>
+<td align="center"><img src="hardware/enclosure/images/shell-outside.jpg" width="230" alt="外壳外部"><br>外壳外部</td>
 <td align="center"><img src="hardware/enclosure/images/shell-inside.jpg" width="230" alt="外壳内部"><br>外壳内部（四角固定立柱）</td>
 </tr>
 </table>
