@@ -2,8 +2,8 @@
 
 这是一个可运行的 ESP32-S3 可穿戴固件与训练管线：采集 IMU / 气压计 / 电量等数据，在设备端用 TensorFlow Lite Micro 做 **4 类运动识别**（其他 / 步行 / 骑行 / 跑步），通过 BLE 上报状态，也支持 Wi-Fi AP + WebSocket 调试。
 
-> 这是 **开源版本**：只包含可公开的固件、模型与训练脚本。
-> 原始采集数据、硬件 CAD（Altium）、数据手册、厂商安装包和构建产物 **不在本仓库中**。
+> 这是 **开源版本**：包含固件、模型、训练脚本，以及 ESP32-S3 的 Altium 硬件工程（`hardware/`）。
+> 原始采集数据、数据手册、厂商安装包和构建产物 **不在本仓库中**。
 
 ## 功能
 
@@ -37,7 +37,7 @@ smart_wear_open/
 │   ├── protocol.md             # BLE TLV 协议
 │   ├── BUILD.md                # 编译与烧录
 │   └── DATASET.md              # 数据格式与标注
-└── hardware/README.md          # 硬件文件为何未包含
+└── hardware/                   # Altium 工程 + 库，CERN-OHL-W-2.0
 ```
 
 ## 快速开始
@@ -101,6 +101,8 @@ python eval_tflite.py
 - 当前只支持 4 类运动，不识别羽毛球动作、跌倒或具体活动类型。
 - SoftAP 默认密码是演示值（`11111111`），WebSocket 没有鉴权，只应在可信网络中使用；正式产品请改为配网 + 鉴权。
 - 部分历史注释/命名保留了原工程的写法，欢迎 PR 清理。
+- 硬件工程只含 Altium 源文件，不含 Gerber / BOM / 坐标文件；3D 模型链接已脱敏，打开时可能提示缺失，重新链接即可。
+- 硬件版本为 `版本19_four`：原理图 2026-02-07、PCB 2025-12-14；打样前请在 Altium 中重新编译并跑 DRC。
 
 ## 许可证
 
@@ -108,7 +110,7 @@ python eval_tflite.py
 - `components/` 与构建时拉取的组件：各自许可证（MIT / BSD / Apache-2.0 / MPL-2.0 / LGPL-2.1 / LGPL-3.0），**整个仓库不是单一的 Apache-2.0**。详见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 - AsyncDelay、SoftWire、ESPAsyncWebServer、AsyncTCP 和 Arduino-ESP32 为 LGPL：只发布源码时保留声明即可；发布固件二进制或售卖设备时，还需满足 LGPL 的源码提供与可重新链接义务（AsyncTCP 是 LGPL-3.0，另有安装信息要求）。
 - 模型权重：随本项目以 Apache-2.0 提供；训练数据不在仓库内。
-- 硬件设计：未包含；如后续加入，建议使用 CERN-OHL-S-2.0 或 CERN-OHL-W-2.0。
+- 硬件设计：`hardware/` 下的 Altium 工程，**CERN-OHL-W-2.0**，见 [hardware/LICENSE](hardware/LICENSE)。
 - “POYU / 泊宇”名称与标识不随代码授权。
 
 ## 贡献

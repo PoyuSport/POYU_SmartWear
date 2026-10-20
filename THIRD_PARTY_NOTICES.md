@@ -52,6 +52,20 @@ typically include:
 This notice is not legal advice; review the obligations with your own counsel
 before shipping a commercial product.
 
+## Hardware design files
+
+`hardware/` contains the Altium project for the ESP32-S3 board and is licensed
+under **CERN-OHL-W-2.0** (see `hardware/LICENSE`), separately from the
+Apache-2.0 firmware.
+
+Only the two project-referenced libraries (`0402`, `SC7A22H`) are bundled.
+Other component libraries, 3D models and vendor documents are not included.
+If you redistribute the hardware files or a derived board, verify the license
+of every footprint/symbol you add and keep the CERN-OHL notices.
+
+Altium Designer is proprietary software; the files are provided in its native
+format and no Altium license is granted.
+
 ## Notes
 
 - Do not delete or replace the license files inside `components/`.
