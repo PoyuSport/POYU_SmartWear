@@ -9,7 +9,29 @@
 | `Quantization_Conv1D_LSTM.py` | 加载 CSV、切窗口、训练 Conv1D+LSTM 混合模型、剪枝、量化、导出 `.tflite` |
 | `eval_tflite.py` | 重新加载测试集，评估 TFLite 模型，输出准确率/混淆矩阵/逐样本对比 |
 | `process_blocks.py` | 给 CSV 的 `Sample_Block` 重新编号，整理连续块 |
+| `tools/dataset_stats.py` | 扫描 CSV 的必需列、行数和标签分布，先筛数据 |
+| `tools/split_csv.py` | 把大 CSV 按固定行数流式拆分，降低单文件读取压力 |
+| `tools/bandpass_filter.py` | 对 CSV 单列做零相位 Butterworth 带通滤波 |
+| `tools/inspect_tflite.py` | 查看 TFLite 的输入/输出 shape、dtype 和量化参数 |
 | `QCL.md` | 原工程笔记 |
+
+## 辅助脚本
+
+```powershell
+# 先看数据有没有缺列、空文件、标签分布
+python tools/dataset_stats.py ..\train_data --json stats.json
+
+# 单个 CSV 太大时按 5 万行拆分
+python tools/split_csv.py ..\train_data\big.csv --rows 50000
+
+# 对某一列做 0.1–20 Hz 带通（需要 scipy）
+python tools/bandpass_filter.py data.csv --column accel_mag --fs 104 --low 0.1 --high 20
+
+# 查看模型输入/输出和量化参数（需要 tensorflow）
+python tools/inspect_tflite.py ..\models\model_12feat.tflite --ops
+```
+
+`dataset_stats.py` 只读表头和逐行计数，不会把整个数据集载入内存；`split_csv.py` 也是流式读写。
 
 ## 环境
 

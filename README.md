@@ -64,6 +64,7 @@ smart_wear_open/
 │   └── idf_component.yml
 ├── components/                 # 第三方库，保留各自 LICENSE
 ├── training/                   # 训练 / 量化 / 评估脚本
+│   └── tools/                  # 数据检查、拆分、滤波、模型查看
 ├── models/model_12feat.tflite  # 参考模型
 ├── docs/
 │   ├── protocol.md             # BLE TLV 协议
@@ -121,7 +122,7 @@ $env:TFLITE_MODEL = ".\models\model_12feat.tflite"
 python eval_tflite.py
 ```
 
-数据格式、目录命名和标签规则见 [docs/DATASET.md](docs/DATASET.md) 与 [training/README.md](training/README.md)。
+数据格式、目录命名和标签规则见 [docs/DATASET.md](docs/DATASET.md) 与 [training/README.md](training/README.md)。数据检查、拆分、滤波和模型查看工具在 [training/tools/](training/tools/)。
 
 ## BLE 协议
 
