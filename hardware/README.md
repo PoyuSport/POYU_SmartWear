@@ -45,8 +45,9 @@ hardware/
 
 <table>
 <tr>
-<td align="center"><img src="enclosure/images/shell-outside.jpg" width="320" alt="外壳外部"><br>外壳外部</td>
-<td align="center"><img src="enclosure/images/shell-inside.jpg" width="320" alt="外壳内部"><br>外壳内部（四角固定立柱）</td>
+<td align="center"><img src="enclosure/images/shell-assembled.png" width="240" alt="外壳装配图"><br>装配图</td>
+<td align="center"><img src="enclosure/images/shell-outside.jpg" width="240" alt="外壳外部"><br>外壳外部</td>
+<td align="center"><img src="enclosure/images/shell-inside.jpg" width="240" alt="外壳内部"><br>外壳内部（四角固定立柱）</td>
 </tr>
 </table>
 

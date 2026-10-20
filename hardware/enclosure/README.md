@@ -6,8 +6,9 @@
 
 <table>
 <tr>
-<td align="center"><img src="images/shell-outside.jpg" width="340" alt="外壳外部"><br>外壳外部（四角螺丝孔）</td>
-<td align="center"><img src="images/shell-inside.jpg" width="340" alt="外壳内部"><br>外壳内部（四角立柱，用于固定 PCB；侧面为卡座开口）</td>
+<td align="center"><img src="images/shell-assembled.png" width="240" alt="外壳装配图"><br>装配图（黄色为渲染配色）</td>
+<td align="center"><img src="images/shell-outside.jpg" width="240" alt="外壳外部"><br>外壳外部（四角螺丝孔）</td>
+<td align="center"><img src="images/shell-inside.jpg" width="240" alt="外壳内部"><br>外壳内部（四角立柱，固定 PCB）</td>
 </tr>
 </table>
 
