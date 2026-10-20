@@ -36,7 +36,7 @@
 <table>
 <tr>
 <td align="center"><img src="hardware/enclosure/images/shell-outside.jpg" width="300" alt="外壳外部"><br>外壳外部（四角螺丝孔）</td>
-<td align="center"><img src="hardware/enclosure/images/shell-inside.jpg" width="300" alt="外壳内部"><br>外壳内部（螺丝柱、卡座开口）</td>
+<td align="center"><img src="hardware/enclosure/images/shell-inside.jpg" width="300" alt="外壳内部"><br>外壳内部（四角固定立柱、卡座开口）</td>
 </tr>
 </table>
 

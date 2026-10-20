@@ -7,7 +7,7 @@
 <table>
 <tr>
 <td align="center"><img src="images/shell-outside.jpg" width="340" alt="外壳外部"><br>外壳外部（四角螺丝孔）</td>
-<td align="center"><img src="images/shell-inside.jpg" width="340" alt="外壳内部"><br>外壳内部（螺丝柱、卡座开口）</td>
+<td align="center"><img src="images/shell-inside.jpg" width="340" alt="外壳内部"><br>外壳内部（四角立柱，用于固定 PCB；侧面为卡座开口）</td>
 </tr>
 </table>
 
@@ -22,7 +22,7 @@
 
 - 两个 STL 可分别切片；材料、层高、支撑和公差没有做正式验证。
 - 建议先打印反面壳，核对 PCB、电池、microSD 卡座和 USB-C 开口的干涉，再打印正面壳。
-- 四角为螺丝柱；螺丝规格以模型内孔为准，仓库不提供紧固件清单。
+- 四角为固定立柱，用于把 PCB/主板固定在外壳内；螺丝规格以模型内孔为准，仓库不提供紧固件清单。
 - 整机外形约 58 × 47 × 12–13 mm，以模型为准。
 - 没有做跌落、防水、佩戴舒适性验证。
 
