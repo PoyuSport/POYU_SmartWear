@@ -2,6 +2,15 @@
 
 58 × 47 mm 口袋标签外壳，提供正面 / 反面两个 STL，可直接切片打印。
 
+## 外观
+
+<table>
+<tr>
+<td align="center"><img src="images/shell-outside.jpg" width="340" alt="外壳外部"><br>外壳外部（四角螺丝孔）</td>
+<td align="center"><img src="images/shell-inside.jpg" width="340" alt="外壳内部"><br>外壳内部（螺丝柱、卡座开口）</td>
+</tr>
+</table>
+
 ## 文件
 
 | 文件 | 说明 |

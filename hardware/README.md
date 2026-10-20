@@ -43,6 +43,13 @@ hardware/
 - `enclosure/反面.STL`：反面壳；
 - 打印建议与装配说明见 [enclosure/README.md](enclosure/README.md)。
 
+<table>
+<tr>
+<td align="center"><img src="enclosure/images/shell-outside.jpg" width="320" alt="外壳外部"><br>外壳外部</td>
+<td align="center"><img src="enclosure/images/shell-inside.jpg" width="320" alt="外壳内部"><br>外壳内部</td>
+</tr>
+</table>
+
 ## 打开
 
 - 需要 **Altium Designer 19 或更新版本**（工程路径来自 AD19）。

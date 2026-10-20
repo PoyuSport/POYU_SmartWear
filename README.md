@@ -31,6 +31,15 @@
 </tr>
 </table>
 
+### 外壳
+
+<table>
+<tr>
+<td align="center"><img src="hardware/enclosure/images/shell-outside.jpg" width="300" alt="外壳外部"><br>外壳外部（四角螺丝孔）</td>
+<td align="center"><img src="hardware/enclosure/images/shell-inside.jpg" width="300" alt="外壳内部"><br>外壳内部（螺丝柱、卡座开口）</td>
+</tr>
+</table>
+
 ## 测试前端（微信小程序）
 
 <img src="docs/images/poyu-sport.jpg" width="360" alt="Poyu Sport 测试界面">
