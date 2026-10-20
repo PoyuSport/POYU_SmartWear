@@ -15,6 +15,13 @@
 - **低功耗**：ULP RISC-V 协处理器加速度唤醒
 - **训练管线**：数据加载、窗口切分、训练、剪枝、量化、TFLite 转换、评估
 
+## 硬件
+
+- ESP32-S3-WROOM-1 模组、USB-C、microSD 卡座、IMU、气压计、电量计
+- Altium 工程、实物照片与 PCB 版图见 [hardware/](hardware/)
+
+<img src="hardware/images/board-front.jpg" width="420" alt="POYU Smart Wear 实物">
+
 ## 目录结构
 
 ```text

@@ -2,6 +2,21 @@
 
 本目录是 **`版本18_four`** 的 Altium Designer 源文件，对应 ESP32-S3 可穿戴板（POYU）。
 
+## 实物与版图
+
+<table>
+<tr>
+<td align="center"><img src="images/board-front.jpg" width="340" alt="实物正面"><br>实物正面</td>
+<td align="center"><img src="images/board-back.jpg" width="340" alt="实物背面"><br>实物背面</td>
+</tr>
+<tr>
+<td align="center"><img src="images/pcb-front.jpg" width="340" alt="PCB 顶层"><br>PCB 顶层（元件面）</td>
+<td align="center"><img src="images/pcb-back.png" width="340" alt="PCB 底层"><br>PCB 底层（SD 卡座面）</td>
+</tr>
+</table>
+
+> 实物照片为装在橙色外壳内的测试板；PCB 版图由 Altium 导出。板上有 ESP32-S3-WROOM-1、USB-C、microSD 卡座、IMU、气压计、电量计等，具体以原理图/PCB 为准。
+
 ## 目录
 
 ```text
