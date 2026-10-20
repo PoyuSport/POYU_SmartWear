@@ -31,6 +31,12 @@
 </tr>
 </table>
 
+## 测试前端（微信小程序）
+
+<img src="docs/images/poyu-sport.jpg" width="360" alt="Poyu Sport 测试界面">
+
+配套测试前端是微信小程序 **Poyu Sport**：连接广播名 `POYUSPORT` 的设备，Service / Characteristic UUID 见 [docs/FRONTEND.md](docs/FRONTEND.md)。小程序闭源、不在本仓库；没有小程序时可用 nRF Connect / LightBlue 按同一 UUID 测试。
+
 ## 目录结构
 
 ```text
@@ -110,10 +116,6 @@ python eval_tflite.py
 ## BLE 协议
 
 `docs/protocol.md` 定义了帧格式（`0xAA 0x55` 起始、TLV、CRC16-CCITT-FALSE）和 `STATE` / `TELEMETRY` / `CONTROL` 等消息。枚举里预留了 6 类运动，当前模型只输出 4 类。
-
-## 测试前端（微信小程序）
-
-配套测试前端是微信小程序 **Poyu Sport**：连接广播名 `POYUSPORT` 的设备，Service / Characteristic UUID 见 [docs/FRONTEND.md](docs/FRONTEND.md)。小程序闭源、不在本仓库；没有小程序时可用 nRF Connect / LightBlue 按同一 UUID 测试。
 
 ## 已知限制
 
