@@ -104,10 +104,12 @@ python eval_tflite.py
 
 ## 许可证
 
-- 本项目原创代码：**Apache License 2.0**，见 [LICENSE](LICENSE)。
-- `components/` 下的第三方库归原作者所有，分别遵循各自目录中的 LICENSE，**不适用**本项目的 Apache-2.0。
+- 本项目原创固件与训练代码：**Apache License 2.0**，见 [LICENSE](LICENSE)。
+- `components/` 与构建时拉取的组件：各自许可证（MIT / BSD / Apache-2.0 / MPL-2.0 / LGPL-2.1 / LGPL-3.0），**整个仓库不是单一的 Apache-2.0**。详见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+- AsyncDelay、SoftWire、ESPAsyncWebServer、AsyncTCP 和 Arduino-ESP32 为 LGPL：只发布源码时保留声明即可；发布固件二进制或售卖设备时，还需满足 LGPL 的源码提供与可重新链接义务（AsyncTCP 是 LGPL-3.0，另有安装信息要求）。
 - 模型权重：随本项目以 Apache-2.0 提供；训练数据不在仓库内。
-- 详见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+- 硬件设计：未包含；如后续加入，建议使用 CERN-OHL-S-2.0 或 CERN-OHL-W-2.0。
+- “POYU / 泊宇”名称与标识不随代码授权。
 
 ## 贡献
 

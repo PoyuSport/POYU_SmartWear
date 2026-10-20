@@ -1,32 +1,61 @@
 # Third-party notices
 
-This repository vendors third-party libraries under `components/`. They are **not**
-covered by this project's Apache-2.0 license; each retains its original license.
-See the `LICENSE`, `COPYING`, `license.txt` or `License.md` file inside each
-component directory.
+This repository vendors third-party libraries under `components/` and downloads
+managed components at build time. They are **not** covered by this project's
+Apache-2.0 license; each retains its original license.
 
-| Component | Notes |
+## Vendored components
+
+| Component | License | Notes |
+|---|---|---|
+| Adafruit_BusIO | MIT | keep `LICENSE` |
+| Adafruit_GFX_Library | BSD | keep `license.txt` |
+| Adafruit_SSD1306 | BSD | keep `license.txt` |
+| Adafruit_Unified_Sensor | Apache-2.0 | keep `LICENSE.txt` |
+| ArduinoEigen | MPL-2.0 | file-level copyleft, keep headers |
+| ArxTypeTraits | MIT | keep `LICENSE` |
+| AsyncDelay | LGPL-2.1 | see LGPL section |
+| AsyncTCP | LGPL-3.0 | see LGPL section |
+| esp-tflite-micro | Apache-2.0 | keep `LICENSE` |
+| ESPAsyncWebServer | LGPL-2.1-or-later | license text added as `LICENSE` |
+| esp_websocket_client | Apache-2.0 | keep `LICENSE` |
+| FastLED | MIT | keep `LICENSE` |
+| ICM20948 | MIT (code) | hardware is CC BY-SA 4.0; only code is vendored |
+| MS5611 | MIT | keep `LICENSE` |
+| sd_card | Unlicense OR CC0-1.0 | Espressif `sd_test_io` |
+| SoftWire | LGPL-2.1 | see LGPL section |
+
+## Fetched at build time
+
+| Component | License |
 |---|---|
-| Adafruit_BusIO | Adafruit library |
-| Adafruit_GFX_Library | Adafruit library |
-| Adafruit_SSD1306 | Adafruit library |
-| Adafruit_Unified_Sensor | Adafruit library |
-| ArduinoEigen | Eigen (MPL2) |
-| ArxTypeTraits | type traits helper |
-| AsyncDelay | timing helper |
-| AsyncTCP | async TCP library |
-| esp-tflite-micro | TensorFlow Lite Micro port (Apache-2.0) |
-| ESPAsyncWebServer | async web server |
-| esp_websocket_client | Espressif component (Apache-2.0) |
-| FastLED | LED library |
-| ICM20948 | IMU driver |
-| MS5611 | barometer driver |
-| sd_card | SD card helper |
-| SoftWire | software I2C |
+| ESP-IDF | Apache-2.0 |
+| Arduino-ESP32 | LGPL-2.1 |
+| esp_tinyusb | Apache-2.0 |
+| esp-sr | see the package license |
+| esp-dsp | Apache-2.0 |
 
-ESP-IDF itself, Arduino-ESP32, ESP-SR, ESP-DSP and other managed components are
-fetched by the IDF component manager at build time and are not vendored here.
-Their licenses are distributed with the corresponding packages.
+## LGPL components
 
-If you redistribute a firmware image built from this repository, keep the
-license notices of the components you link and comply with their terms.
+`AsyncDelay`, `SoftWire`, `ESPAsyncWebServer`, `AsyncTCP` and Arduino-ESP32 are
+under LGPL terms. For source-only distribution, keep the license texts and
+notices. If you distribute **firmware binaries** (including devices you sell),
+you must also comply with the LGPL requirements for that version, which
+typically include:
+
+- providing the corresponding source code (or a written offer);
+- allowing the user to relink the application with a modified version of the
+  LGPL library;
+- for LGPL-3.0 components (AsyncTCP), providing the "Installation Information"
+  required for User Products.
+
+This notice is not legal advice; review the obligations with your own counsel
+before shipping a commercial product.
+
+## Notes
+
+- Do not delete or replace the license files inside `components/`.
+- `docs/protocol.md` and the project documentation are covered by the
+  repository's Apache-2.0 license unless stated otherwise.
+- The model weights are distributed under Apache-2.0; the training data is not
+  included.
