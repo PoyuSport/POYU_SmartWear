@@ -69,6 +69,7 @@ smart_wear_open/
 ├── docs/
 │   ├── protocol.md             # BLE TLV 协议
 │   ├── FRONTEND.md             # 微信小程序测试说明
+│   ├── TRAINING.md             # 采集、标注、训练、量化与部署全流程
 │   ├── BUILD.md                # 编译与烧录
 │   └── DATASET.md              # 数据格式与标注
 └── hardware/                   # Altium 工程 + 库，CERN-OHL-W-2.0
@@ -107,6 +108,8 @@ idf.py -p COMx flash monitor
 切换 int8 时，需要用 `training/` 里的量化脚本重新生成 `model_io_int8.h`。
 
 ## 训练与量化
+
+完整流程见 [docs/TRAINING.md](docs/TRAINING.md)：设备端采集、数据检查、标注、窗口化、训练、剪枝/量化、固件加载与端侧验证。
 
 ```powershell
 cd training

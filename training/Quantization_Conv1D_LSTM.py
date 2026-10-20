@@ -871,7 +871,7 @@ from tensorflow.keras import layers
 import numpy as np
 import pandas as pd
 # 引入 GroupShuffleSplit
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import GroupShuffleSplit
 import tensorflow_model_optimization as tfmot
 import glob
 import matplotlib.pyplot as plt
@@ -1193,13 +1193,14 @@ def main():
     if len(X) == 0: return
 
     print(f"数据准备就绪：X={X.shape}, y={y.shape}")
-    print("使用 GroupShuffleSplit 进行数据集划分...")
-    # 数据集切分
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42, stratify=y
-    )
-    
-    print(f"训练集大小: {X_train.shape}, 随机验证集大小: {X_test.shape}")
+    print("按 Sample_Block 分组划分训练/测试集...")
+    # 同一采集块内的窗口高度相关，必须按块划分，避免数据泄漏
+    splitter = GroupShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
+    train_idx, test_idx = next(splitter.split(X, y, groups))
+    X_train, X_test = X[train_idx], X[test_idx]
+    y_train, y_test = y[train_idx], y[test_idx]
+
+    print(f"训练集大小: {X_train.shape}, 验证集大小: {X_test.shape}")
 
     base_model = build_prunable_hybrid_model(input_shape=(75, 12), num_classes=4)
     pruned_model = apply_pruning(base_model)
