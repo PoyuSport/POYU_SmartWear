@@ -70,6 +70,7 @@ smart_wear_open/
 │   ├── protocol.md             # BLE TLV 协议
 │   ├── FRONTEND.md             # 微信小程序测试说明
 │   ├── TRAINING.md             # 采集、标注、训练、量化与部署全流程
+│   ├── ENVIRONMENT.md          # 开发环境、工具链与版本
 │   ├── BUILD.md                # 编译与烧录
 │   └── DATASET.md              # 数据格式与标注
 └── hardware/                   # Altium 工程 + 库，CERN-OHL-W-2.0
@@ -77,7 +78,7 @@ smart_wear_open/
 
 ## 快速开始
 
-环境：ESP-IDF **5.3.1**（或兼容的 5.3.x），Python 3.10+。
+环境：ESP-IDF **5.3.1**（或兼容的 5.3.x），Python 3.10+。完整版本矩阵见 [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md)。
 
 ```bash
 git clone <this-repo> smart_wear_open

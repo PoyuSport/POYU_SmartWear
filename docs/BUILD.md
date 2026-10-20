@@ -1,5 +1,7 @@
 # 编译与烧录
 
+完整环境清单（系统、工具链、驱动）见 [ENVIRONMENT.md](ENVIRONMENT.md)。
+
 ## 环境
 
 | 项目 | 版本/说明 |
